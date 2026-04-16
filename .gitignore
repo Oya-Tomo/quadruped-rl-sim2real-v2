@@ -13,3 +13,6 @@ wheels/
 wandb/
 checkpoints/
 example/
+
+# Environment variables
+.env
