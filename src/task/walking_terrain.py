@@ -628,6 +628,12 @@ class WalkingTerrainEnv(EnvBase):
                         "action": UnboundedContinuous(
                             shape=(self.dofs_num,), dtype=torch.float32
                         ),
+                        "gait_phase_sin": UnboundedContinuous(
+                            shape=(4,), dtype=torch.float32
+                        ),
+                        "gait_phase_cos": UnboundedContinuous(
+                            shape=(4,), dtype=torch.float32
+                        ),
                         "episode_progress": UnboundedContinuous(
                             shape=(1,), dtype=torch.float32
                         ),
@@ -1593,6 +1599,8 @@ class WalkingTerrainEnv(EnvBase):
                 "dofs_position": self.state.dofs_position - self.dofs_origin,
                 "dofs_velocity": self.state.dofs_velocity,
                 "projected_gravity": self.state.projected_gravity,
+                "gait_phase_sin": self.state.gait_phase.sin(),
+                "gait_phase_cos": self.state.gait_phase.cos(),
                 "command": self.command,
                 "action": self.action_applied,
                 "episode_progress": self.episode_steps.to(torch.float32).unsqueeze(-1)

@@ -177,7 +177,7 @@ def main() -> None:
 
     actor_network = MLPActorNetwork(
         MLPActorParams(
-            state_dim=49,
+            state_dim=43,
             action_dim=env.dofs_num,
             hidden_dims=[512, 256, 128],
             state_keys=[
@@ -186,6 +186,7 @@ def main() -> None:
                 ("observation", "dofs_position"),
                 ("observation", "dofs_velocity"),
                 ("observation", "projected_gravity"),
+                ("observation", "gait_phase_sin"),
                 ("observation", "command"),
                 ("observation", "action"),
             ],
@@ -195,7 +196,7 @@ def main() -> None:
     ).to(device)
     critic_network = MLPCriticNetwork(
         MLPCriticParams(
-            state_dim=50,
+            state_dim=58,
             hidden_dims=[512, 256, 128],
             value_dim=1,
             cost_dim=None,
@@ -205,6 +206,8 @@ def main() -> None:
                 ("observation", "dofs_position"),
                 ("observation", "dofs_velocity"),
                 ("observation", "projected_gravity"),
+                ("observation", "gait_phase_sin"),
+                ("observation", "gait_phase_cos"),
                 ("observation", "command"),
                 ("observation", "action"),
                 ("observation", "episode_progress"),
