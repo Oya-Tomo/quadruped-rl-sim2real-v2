@@ -138,6 +138,7 @@ def _make_env(device: torch.device) -> WalkingTerrainEnv:
             "fall_down",
             "unsafe_xyz_velocity",
             "unsafe_rpy_velocity",
+            "collision_reset",
         ],
         truncate_components=[
             "timeout",
