@@ -191,7 +191,7 @@ def main() -> None:
 
     actor_network = MLPActorNetwork(
         MLPActorParams(
-            state_dim=43,
+            state_dim=53,
             action_dim=env.dofs_num,
             hidden_dims=[512, 256, 128],
             state_keys=[
